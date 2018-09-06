@@ -363,27 +363,27 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[9] =
+static const flex_int16_t yy_accept[11] =
     {   0,
-        0,    0,    5,    3,    2,    1,    1,    0
+        0,    0,    5,    3,    4,    3,    2,    1,    2,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
+        1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
+        1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    1,    1,    1,
-        1,    1,    1,    1,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        1,    1,    1,    1,    1,    1,    4,    4,    4,    4,
+        1,    2,    4,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    4,    1,    5,    5,    5,
+        5,    5,    5,    5,    5,    5,    5,    1,    1,    1,
+        1,    1,    4,    1,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        1,    1,    1,    1,    1,    1,    6,    6,    6,    6,
 
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    1,    1,    1,    1,    1,    1,    1,    1,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    1,    7,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -400,31 +400,33 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[5] =
+static const YY_CHAR yy_meta[8] =
     {   0,
-        1,    1,    2,    2
+        1,    2,    2,    1,    3,    3,    2
     } ;
 
-static const flex_int16_t yy_base[10] =
+static const flex_int16_t yy_base[13] =
     {   0,
-        0,    0,    6,    7,    7,    0,    0,    7,    3
+        0,    0,   10,   11,   11,    0,    0,   11,    0,   11,
+        7,    5
     } ;
 
-static const flex_int16_t yy_def[10] =
+static const flex_int16_t yy_def[13] =
     {   0,
-        8,    1,    8,    8,    8,    9,    9,    0,    8
+       10,    1,   10,   10,   10,   11,   12,   10,   12,    0,
+       10,   10
     } ;
 
-static const flex_int16_t yy_nxt[12] =
+static const flex_int16_t yy_nxt[19] =
     {   0,
-        4,    5,    4,    6,    7,    8,    3,    8,    8,    8,
-        8
+        4,    4,    5,    6,    4,    7,    6,    9,    8,   10,
+        3,   10,   10,   10,   10,   10,   10,   10
     } ;
 
-static const flex_int16_t yy_chk[12] =
+static const flex_int16_t yy_chk[19] =
     {   0,
-        1,    1,    1,    1,    9,    3,    8,    8,    8,    8,
-        8
+        1,    1,    1,    1,    1,    1,    1,   12,   11,    3,
+       10,   10,   10,   10,   10,   10,   10,   10
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -441,22 +443,71 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "exercicio1.lex"
-#line 4 "exercicio1.lex"
+#line 1 "trab1.lex"
+#line 5 "trab1.lex"
 
-#include <stdio.h>
-#include <time.h>
+	#include <stdio.h>
+	#include <stdbool.h>
+	#include <string.h>
 
+	typedef struct node {
+		char * word;
+		struct node * next;
+	} node_t;
 
-int words = 0;
+	int num_words = 0;
+	int num_phrases = 0;
+	int num_distinct_words = 0;
+	int avg_word_per_phrase = 0;
+	int duplicates = 0;
+	node_t * head;
+		
+	bool exist(char* word){
+		//printf("%s\n", word);
+		if(head == NULL){
+			return false;
+		}
+		node_t* current = head;
+		while(current != NULL){
+			//printf("%s=%s", current->word, word);
+			if(strcmp(current->word, word) == 0){
+				printf("já existe: %s", word);
+				return true;
+			}
+			current = current->next;
+		}
+		return false;
+	}
+	
+	void push(char* word) {
+		num_words++;
+		if(exist(word)){
+			return;
+		}
+		num_distinct_words++;
 
-void sum(char* word){
-	printf("%s", word);
-	words++;
-}
+		if(head == NULL){
+			head = malloc(sizeof(node_t));
+			head->word = word;
+			head->next = NULL;
+		}
 
-#line 459 "lex.yy.c"
-#line 460 "lex.yy.c"
+		node_t * current = head;
+		while (current->next != NULL) {
+			current = current->next;
+		}
+
+		/* now we can add a new variable */
+		current->next = malloc(sizeof(node_t));
+		current->next->word = word;
+		current->next->next = NULL;
+
+	}
+	
+	
+
+#line 510 "lex.yy.c"
+#line 511 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -673,10 +724,11 @@ YY_DECL
 		}
 
 	{
-#line 18 "exercicio1.lex"
+#line 70 "trab1.lex"
 
 
-#line 680 "lex.yy.c"
+
+#line 732 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -703,13 +755,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 9 )
+				if ( yy_current_state >= 11 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 7 );
+		while ( yy_base[yy_current_state] != 11 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -734,27 +786,27 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
+/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 20 "exercicio1.lex"
-{sum(yytext);printf("-%s\n", yytext);}
+#line 73 "trab1.lex"
+{num_phrases++;}
 	YY_BREAK
 case 2:
-/* rule 2 can match eol */
 YY_RULE_SETUP
-#line 21 "exercicio1.lex"
-
+#line 74 "trab1.lex"
+{push(yytext);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 22 "exercicio1.lex"
-
+#line 75 "trab1.lex"
+;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 24 "exercicio1.lex"
+#line 77 "trab1.lex"
 ECHO;
 	YY_BREAK
-#line 758 "lex.yy.c"
+#line 810 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1051,7 +1103,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 9 )
+			if ( yy_current_state >= 11 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1079,11 +1131,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 9 )
+		if ( yy_current_state >= 11 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 8);
+	yy_is_jam = (yy_current_state == 10);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1759,14 +1811,21 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 24 "exercicio1.lex"
+#line 77 "trab1.lex"
 
 
 int main(int argc, char *argv[]){
 	yyin = fopen(argv[1], "r");
 	yylex();
 	fclose(yyin);
-	printf("Número de palavras: %d\n", words);
+	
+	avg_word_per_phrase = (float)num_words / (float)num_phrases;
+	float density = ( (float)num_distinct_words / (float)num_words ) * 100;
+	printf("Número de palavras: %d\n", num_words);
+	printf("Número de frases: %d\n", num_phrases);
+	printf("Número de palavras diferentes: %d\n", num_distinct_words);
+	printf("Número médio de palavras por frase: %d\n", avg_word_per_phrase);
+	printf("Densidade léxica do texto: %.2f\n", density);
 	return 0;
 }
 

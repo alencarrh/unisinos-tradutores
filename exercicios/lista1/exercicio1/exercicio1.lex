@@ -8,11 +8,16 @@
 
 int words = 0;
 
+void sum(char* word){
+	printf("%s", word);
+	words++;
+}
+
 %}
 
 %%
 
-[:alpha:]	words++;
+[a-zA-Z][a-zA-Z0-9]*	{sum(yytext);printf("-%s\n", yytext);}
 \n
 .
 
