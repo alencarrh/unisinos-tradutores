@@ -47,6 +47,7 @@
 			head = malloc(sizeof(node_t));
 			head->word = word;
 			head->next = NULL;
+			return;
 		}
 
 		node_t * current = head;
@@ -80,14 +81,23 @@ int main(int argc, char *argv[]){
 	yyin = fopen(argv[1], "r");
 	yylex();
 	fclose(yyin);
+
+	FILE* file_ptr = fopen("stats.txt", "w");	
 	
 	avg_word_per_phrase = (float)num_words / (float)num_phrases;
 	float density = ( (float)num_distinct_words / (float)num_words ) * 100;
-	printf("Número de palavras: %d\n", num_words);
-	printf("Número de frases: %d\n", num_phrases);
-	printf("Número de palavras diferentes: %d\n", num_distinct_words);
-	printf("Número médio de palavras por frase: %d\n", avg_word_per_phrase);
-	printf("Densidade léxica do texto: %.2f\n", density);
+	fprintf(file_ptr, "Número de palavras: %d\n", num_words);
+	fprintf(file_ptr, "Número de frases: %d\n", num_phrases);
+	fprintf(file_ptr, "Número de palavras diferentes: %d\n", num_distinct_words);
+	fprintf(file_ptr, "Número médio de palavras por frase: %d\n", avg_word_per_phrase);
+	fprintf(file_ptr, "Densidade léxica do texto: %.2f\n", density);
+
+
+
+	
+	fclose(file_ptr);
+	
+
 	return 0;
 }
 

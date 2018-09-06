@@ -490,6 +490,7 @@ char *yytext;
 			head = malloc(sizeof(node_t));
 			head->word = word;
 			head->next = NULL;
+			return;
 		}
 
 		node_t * current = head;
@@ -506,8 +507,8 @@ char *yytext;
 	
 	
 
-#line 510 "lex.yy.c"
 #line 511 "lex.yy.c"
+#line 512 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -724,11 +725,11 @@ YY_DECL
 		}
 
 	{
-#line 70 "trab1.lex"
+#line 71 "trab1.lex"
 
 
 
-#line 732 "lex.yy.c"
+#line 733 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -788,25 +789,25 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 73 "trab1.lex"
+#line 74 "trab1.lex"
 {num_phrases++;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 74 "trab1.lex"
+#line 75 "trab1.lex"
 {push(yytext);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 75 "trab1.lex"
+#line 76 "trab1.lex"
 ;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 77 "trab1.lex"
+#line 78 "trab1.lex"
 ECHO;
 	YY_BREAK
-#line 810 "lex.yy.c"
+#line 811 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1811,21 +1812,30 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 77 "trab1.lex"
+#line 78 "trab1.lex"
 
 
 int main(int argc, char *argv[]){
 	yyin = fopen(argv[1], "r");
 	yylex();
 	fclose(yyin);
+
+	FILE* file_ptr = fopen("stats.txt", "w");	
 	
 	avg_word_per_phrase = (float)num_words / (float)num_phrases;
 	float density = ( (float)num_distinct_words / (float)num_words ) * 100;
-	printf("Número de palavras: %d\n", num_words);
-	printf("Número de frases: %d\n", num_phrases);
-	printf("Número de palavras diferentes: %d\n", num_distinct_words);
-	printf("Número médio de palavras por frase: %d\n", avg_word_per_phrase);
-	printf("Densidade léxica do texto: %.2f\n", density);
+	fprintf(file_ptr, "Número de palavras: %d\n", num_words);
+	fprintf(file_ptr, "Número de frases: %d\n", num_phrases);
+	fprintf(file_ptr, "Número de palavras diferentes: %d\n", num_distinct_words);
+	fprintf(file_ptr, "Número médio de palavras por frase: %d\n", avg_word_per_phrase);
+	fprintf(file_ptr, "Densidade léxica do texto: %.2f\n", density);
+
+
+
+	
+	fclose(file_ptr);
+	
+
 	return 0;
 }
 

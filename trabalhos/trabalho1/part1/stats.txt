@@ -1,0 +1,5 @@
+Número de palavras: 25
+Número de frases: 5
+Número de palavras diferentes: 25
+Número médio de palavras por frase: 5
+Densidade léxica do texto: 100.00
