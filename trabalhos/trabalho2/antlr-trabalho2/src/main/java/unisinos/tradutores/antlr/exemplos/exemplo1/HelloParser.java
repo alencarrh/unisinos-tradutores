@@ -1,4 +1,4 @@
-// Generated from C:/Users/alenc/Documents/_projetos/ensepro/antlr-trabalho-ga/src/main/java/unisinos/tradutores/antlr/exemplos/exemplo1\Hello.g4 by ANTLR 4.7
+// Generated from C:/Users/alenc/Documents/_projetos/Tradutores/trabalhos/trabalho2/antlr-trabalho2/src/main/java/unisinos/tradutores/antlr/exemplos/exemplo1\Hello.g4 by ANTLR 4.7
 package unisinos.tradutores.antlr.exemplos.exemplo1;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -92,6 +92,11 @@ public class HelloParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof HelloListener ) ((HelloListener)listener).exitR(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof HelloVisitor ) return ((HelloVisitor<? extends T>)visitor).visitR(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

@@ -1,4 +1,4 @@
-// Generated from C:/Users/alenc/Documents/_projetos/ensepro/antlr-trabalho-ga/src/main/java/unisinos/tradutores/antlr/exemplos/exemplo2\LabeledExpr.g4 by ANTLR 4.7
+// Generated from C:/Users/alenc/Documents/_projetos/Tradutores/trabalhos/trabalho2/antlr-trabalho2/src/main/java/unisinos/tradutores/antlr/exemplos/exemplo2\LabeledExpr.g4 by ANTLR 4.7
 package unisinos.tradutores.antlr.exemplos.exemplo2;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -100,6 +100,11 @@ public class LabeledExprParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof LabeledExprListener ) ((LabeledExprListener)listener).exitProg(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof LabeledExprVisitor ) return ((LabeledExprVisitor<? extends T>)visitor).visitProg(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ProgContext prog() throws RecognitionException {
@@ -158,6 +163,11 @@ public class LabeledExprParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof LabeledExprListener ) ((LabeledExprListener)listener).exitBlank(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof LabeledExprVisitor ) return ((LabeledExprVisitor<? extends T>)visitor).visitBlank(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class PrintExprContext extends StatContext {
 		public ExprContext expr() {
@@ -172,6 +182,11 @@ public class LabeledExprParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof LabeledExprListener ) ((LabeledExprListener)listener).exitPrintExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof LabeledExprVisitor ) return ((LabeledExprVisitor<? extends T>)visitor).visitPrintExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class AssignContext extends StatContext {
@@ -188,6 +203,11 @@ public class LabeledExprParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof LabeledExprListener ) ((LabeledExprListener)listener).exitAssign(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof LabeledExprVisitor ) return ((LabeledExprVisitor<? extends T>)visitor).visitAssign(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -267,6 +287,11 @@ public class LabeledExprParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof LabeledExprListener ) ((LabeledExprListener)listener).exitParens(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof LabeledExprVisitor ) return ((LabeledExprVisitor<? extends T>)visitor).visitParens(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class MulDivContext extends ExprContext {
 		public Token op;
@@ -284,6 +309,11 @@ public class LabeledExprParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof LabeledExprListener ) ((LabeledExprListener)listener).exitMulDiv(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof LabeledExprVisitor ) return ((LabeledExprVisitor<? extends T>)visitor).visitMulDiv(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class AddSubContext extends ExprContext {
@@ -303,6 +333,11 @@ public class LabeledExprParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof LabeledExprListener ) ((LabeledExprListener)listener).exitAddSub(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof LabeledExprVisitor ) return ((LabeledExprVisitor<? extends T>)visitor).visitAddSub(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class IdContext extends ExprContext {
 		public TerminalNode ID() { return getToken(LabeledExprParser.ID, 0); }
@@ -315,6 +350,11 @@ public class LabeledExprParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof LabeledExprListener ) ((LabeledExprListener)listener).exitId(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof LabeledExprVisitor ) return ((LabeledExprVisitor<? extends T>)visitor).visitId(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class IntContext extends ExprContext {
 		public TerminalNode INT() { return getToken(LabeledExprParser.INT, 0); }
@@ -326,6 +366,11 @@ public class LabeledExprParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof LabeledExprListener ) ((LabeledExprListener)listener).exitInt(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof LabeledExprVisitor ) return ((LabeledExprVisitor<? extends T>)visitor).visitInt(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

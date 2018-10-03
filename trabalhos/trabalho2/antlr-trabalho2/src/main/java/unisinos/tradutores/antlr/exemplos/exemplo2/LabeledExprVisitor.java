@@ -1,4 +1,5 @@
-package unisinos.tradutores.antlr.exemplos.exemplo2;// Generated from LabeledExpr.g4 by ANTLR 4.7.1
+// Generated from C:/Users/alenc/Documents/_projetos/Tradutores/trabalhos/trabalho2/antlr-trabalho2/src/main/java/unisinos/tradutores/antlr/exemplos/exemplo2\LabeledExpr.g4 by ANTLR 4.7
+package unisinos.tradutores.antlr.exemplos.exemplo2;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**

@@ -1,4 +1,4 @@
-// Generated from C:/Users/alenc/Documents/_projetos/ensepro/antlr-trabalho-ga/src/main/java/unisinos/tradutores/antlr/exemplos/exemplo2\LabeledExpr.g4 by ANTLR 4.7
+// Generated from C:/Users/alenc/Documents/_projetos/Tradutores/trabalhos/trabalho2/antlr-trabalho2/src/main/java/unisinos/tradutores/antlr/exemplos/exemplo2\LabeledExpr.g4 by ANTLR 4.7
 package unisinos.tradutores.antlr.exemplos.exemplo2;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

@@ -8,10 +8,10 @@ import java.io.InputStream;
 
 public class Calc {
     public static void main(String[] args) throws Exception {
-        String inputFile = null;
-        if ( args.length>0 ) inputFile = args[0];
-        InputStream is = System.in;
-        if ( inputFile!=null ) is = new FileInputStream(inputFile);
+        String inputFile = "./src/main/java/unisinos/tradutores/antlr/exemplos/exemplo2/input.txt";
+
+        InputStream is;
+        is = new FileInputStream(inputFile);
         ANTLRInputStream input = new ANTLRInputStream(is);
         LabeledExprLexer lexer = new LabeledExprLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
