@@ -52,7 +52,7 @@
                         <configuration>
                             <classifier>spring-boot</classifier>
                             <mainClass>
-                                teoria.informacao.ga.main.Main
+                                unisinos.tradutores.antlr.trabalho.ga.Main
                             </mainClass>
                         </configuration>
                     </execution>
