@@ -28,12 +28,12 @@ public class TesteClass {
             default:
         }
 
-//        try {
-//            System.out.println("t");
-//        }
-//        catch (Exception e){
-//            System.out.println(e.toString());
-//        }
+        try {
+            System.out.println("t");
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
 
 
         if (a > 10) {
@@ -76,6 +76,14 @@ public class TesteClass {
 
 
     public void X() {
+        if (true) {
+
+        } else if (true) {
+
+        } else {
+
+        }
+
         done = true;
     }
 

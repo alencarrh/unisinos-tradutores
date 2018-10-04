@@ -6,72 +6,43 @@ import unisinos.tradutores.antlr.main.domain.Method;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static java.util.Objects.isNull;
 
 @Getter
 @Builder
 public class MethodAnaliser {
 
-    public enum Commands {
-        IF {
-            public String toString() {
-                return "if";
-            }
-        },
-
-        ELSE_IF {
-            public String toString() {
-                return "else ifif";
-            }
-        },
-
-        CASE {
-            public String toString() {
-                return "case";
-            }
-        },
-
-        FOR {
-            public String toString() {
-                return "for";
-            }
-        },
-
-        DO {
-            public String toString() {
-                return "do";
-            }
-        },
-
-        WHILE {
-            public String toString() {
-                return "while";
-            }
-        },
-
-        QUESTION {
-            public String toString() {
-                return "?";
-            }
-        },
-
-        CATCH {
-            public String toString() {
-                return "catch";
-            }
-        }
-    }
-
+    private Map<String, Integer> commands;
     private final List<Method> methods;
-
     private static final String PREFIX = "\t-> ";
-
     public int complexidadeCiclomatica;
 
+    private Integer getWeight(String command) {
+        if (isNull(commands)) {
+            initCommandWeight();
+        }
+        return commands.getOrDefault(command, 0);
+    }
+
+    private void initCommandWeight() {
+        commands = new HashMap<>();
+        commands.put("if", 1);
+        commands.put("else ifif", 1);
+        commands.put("case", 1);
+        commands.put("for", 1);
+        commands.put("do", 1);
+        commands.put("while", 1);
+        commands.put("?", 1);
+        commands.put("catch", 1);
+    }
+
+
     public void analise() {
-
         System.out.println("Resultados:");
-
         methods.forEach(method -> {
             System.out.println("-> Método: " + method.getName());
             complexidadeCiclomatica(method);
@@ -81,17 +52,9 @@ public class MethodAnaliser {
     }
 
     private void complexidadeCiclomatica(final Method method) {
-        complexidadeCiclomatica = 1;
-        method.getCommands().forEach(c -> {
-            for (Commands co : Commands.values()) {
-                if (co.toString().equals(c.toString())) {
-                    complexidadeCiclomatica++;
-                }
-            }
-        });
-
+        complexidadeCiclomatica = method.getCommands().stream().mapToInt(this::getWeight).sum();
+        complexidadeCiclomatica++;
         System.out.println(PREFIX + "Complexidade Ciclomática: " + complexidadeCiclomatica);
-        //analisa e printa
     }
 
     private void fanOut(final Method method) {
@@ -120,8 +83,6 @@ public class MethodAnaliser {
         }
 
         System.out.println(PREFIX + "Aninhamento: " + nesting);
-
-
     }
 
 }
