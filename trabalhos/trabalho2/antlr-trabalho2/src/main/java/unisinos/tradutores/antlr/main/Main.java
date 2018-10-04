@@ -17,7 +17,13 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        String inputFile = "./src/main/java/unisinos/tradutores/antlr/main/TesteClass.java";
+
+        if (args.length == 0) {
+            System.out.println("ERRO ::::: Arquivo a ser analisado é obrigatório");
+            return;
+        }
+
+        String inputFile = args[0];
 
         CharStream cs = CharStreams.fromPath(Paths.get(inputFile));
 
