@@ -1,10 +1,10 @@
 package unisinos.tradutores.antlr.exemplos.exemplo2;
 
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.nio.file.Paths;
 
 public class Calc {

@@ -83,8 +83,8 @@ public class MethodAnaliser {
     private void complexidadeCiclomatica(final Method method) {
         complexidadeCiclomatica = 1;
         method.getCommands().forEach(c -> {
-            for (Commands co : Commands.values()){
-                if (co.toString().equals(c.toString())){
+            for (Commands co : Commands.values()) {
+                if (co.toString().equals(c.toString())) {
                     complexidadeCiclomatica++;
                 }
             }
