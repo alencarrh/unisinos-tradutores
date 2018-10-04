@@ -24,33 +24,49 @@ public class JavaBaseListenerImpl extends Java8BaseListener {
 
     @Override
     public void enterMethodDeclarator(Java8Parser.MethodDeclaratorContext ctx) {
-        if(nonNull(currentMethod)){
+        if (nonNull(currentMethod)) {
             methods.add(currentMethod.build());
         }
-        System.out.println("ENTER METHOD DECLARATOR: " + ctx.Identifier().getText());
+//        System.out.println("ENTER METHOD DECLARATOR: " + ctx.Identifier().getText());
         currentMethod = Method.builder().name(ctx.Identifier().getText());
     }
 
-
     @Override
     public void enterMethodInvocation(Java8Parser.MethodInvocationContext ctx) {
-        System.out.println("\tENTER METHOD INVOCATOIN: " + ctx.methodName().getText());
-        currentMethod.methodsCall(ctx.methodName().getText());
+//        System.out.println("\tENTER METHOD INVOCATOIN: " + ctx.methodName().getText());
+        if (nonNull(currentMethod)) {
+            currentMethod.methodsCall(ctx.methodName().getText());
+        }
     }
 
     @Override
     public void enterMethodInvocation_lf_primary(Java8Parser.MethodInvocation_lf_primaryContext ctx) {
-        System.out.println("\tENTER_METHOD_INVOCATOIN_lF_PRIMARY: " + ctx.Identifier().getText());
-        currentMethod.methodsCall(ctx.Identifier().getText());
+//        System.out.println("\tENTER_METHOD_INVOCATOIN_lF_PRIMARY: " + ctx.Identifier().getText());
+        if (nonNull(currentMethod)) {
+            currentMethod.methodsCall(ctx.Identifier().getText());
+        }
     }
 
     @Override
     public void enterMethodInvocation_lfno_primary(Java8Parser.MethodInvocation_lfno_primaryContext ctx) {
-        System.out.println("\tENTER_METHOD_INVOCATOIN_lF_NO_PRIMARY: " + ctx.Identifier().getText());
-        currentMethod.methodsCall(ctx.Identifier().getText());
+//        System.out.println("\tENTER_METHOD_INVOCATOIN_lF_NO_PRIMARY: " + ctx.Identifier().getText());
+        if (nonNull(currentMethod)) {
+            currentMethod.methodsCall(ctx.Identifier().getText());
+        }
     }
 
+
+    @Override
+    public void enterBlockStatements(Java8Parser.BlockStatementsContext ctx) {
+//        System.out.println("\tENTER BLOCK STATEMENTS: " + ctx.getText());
+        if (nonNull(currentMethod)) {
+            currentMethod.blockStatement(ctx.getText());
+        }
+    }
+
+
     public List<Method> result() {
+        methods.add(currentMethod.build());
         return methods;
     }
 }

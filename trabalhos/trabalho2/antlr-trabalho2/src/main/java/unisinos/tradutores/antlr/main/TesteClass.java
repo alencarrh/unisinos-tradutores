@@ -50,6 +50,20 @@ public class TesteClass {
 
             }
         }
+
+        if (true) {
+            if (true) {
+                if (true) {
+                    if (true) {
+                        if (true) {
+                            if (true) {
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 

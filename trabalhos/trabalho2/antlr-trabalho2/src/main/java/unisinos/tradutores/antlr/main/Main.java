@@ -34,11 +34,6 @@ public class Main {
                 .methods(extractor.result())
                 .build();
 
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-
         analiser.analise();
     }
 

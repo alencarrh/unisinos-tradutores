@@ -14,8 +14,11 @@ public class Method {
     private final String name;
     @Singular
     private final List<String> commands;
+
     @Singular
     private final Set<String> methodsCalls;
-    private final Integer nesting;
+
+    @Singular
+    private final List<String> blockStatements;
 
 }
