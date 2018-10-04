@@ -1,5 +1,5 @@
 // Generated from C:/Users/alenc/Documents/_projetos/Tradutores/trabalhos/trabalho2/antlr-trabalho2/src/main/java/unisinos/tradutores/antlr/trabalho/ga/gramatica\Java.g4 by ANTLR 4.7
-package unisinos.tradutores.antlr.trabalho.ga.gramatica;
+package unisinos.tradutores.antlr.main.gramatica;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
