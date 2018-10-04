@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Singular;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -14,7 +15,7 @@ public class Method {
     @Singular
     private final List<String> commands;
     @Singular
-    private final List<String> methodsCalls;
+    private final Set<String> methodsCalls;
     private final Integer nesting;
 
 }

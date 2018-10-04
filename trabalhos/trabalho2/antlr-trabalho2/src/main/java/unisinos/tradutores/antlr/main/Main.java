@@ -6,8 +6,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import unisinos.tradutores.antlr.main.analiser.MethodAnaliser;
-import unisinos.tradutores.antlr.main.gramatica.JavaLexer;
-import unisinos.tradutores.antlr.main.gramatica.JavaParser;
+import unisinos.tradutores.antlr.main.gramatica.Java8Lexer;
+import unisinos.tradutores.antlr.main.gramatica.Java8Parser;
 import unisinos.tradutores.antlr.main.listener.JavaBaseListenerImpl;
 
 import java.io.IOException;
@@ -21,9 +21,9 @@ public class Main {
 
         CharStream cs = CharStreams.fromPath(Paths.get(inputFile));
 
-        JavaLexer lexer = new JavaLexer(cs);
+        Java8Lexer lexer = new Java8Lexer(cs);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        JavaParser parser = new JavaParser(tokens);
+        Java8Parser parser = new Java8Parser(tokens);
         ParseTree tree = parser.compilationUnit(); // parse
 
         ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
