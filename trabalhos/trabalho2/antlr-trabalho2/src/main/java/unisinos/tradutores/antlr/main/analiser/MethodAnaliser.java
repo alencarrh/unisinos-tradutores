@@ -12,9 +12,61 @@ import java.util.List;
 @Builder
 public class MethodAnaliser {
 
+    public enum Commands {
+        IF {
+            public String toString() {
+                return "if";
+            }
+        },
+
+        ELSE_IF {
+            public String toString() {
+                return "else ifif";
+            }
+        },
+
+        CASE {
+            public String toString() {
+                return "case";
+            }
+        },
+
+        FOR {
+            public String toString() {
+                return "for";
+            }
+        },
+
+        DO {
+            public String toString() {
+                return "do";
+            }
+        },
+
+        WHILE {
+            public String toString() {
+                return "while";
+            }
+        },
+
+        QUESTION {
+            public String toString() {
+                return "?";
+            }
+        },
+
+        CATCH {
+            public String toString() {
+                return "catch";
+            }
+        }
+    }
+
     private final List<Method> methods;
 
     private static final String PREFIX = "\t-> ";
+
+    public int complexidadeCiclomatica;
 
     public void analise() {
 
@@ -29,7 +81,16 @@ public class MethodAnaliser {
     }
 
     private void complexidadeCiclomatica(final Method method) {
+        complexidadeCiclomatica = 1;
+        method.getCommands().forEach(c -> {
+            for (Commands co : Commands.values()){
+                if (co.toString().equals(c.toString())){
+                    complexidadeCiclomatica++;
+                }
+            }
+        });
 
+        System.out.println(PREFIX + "Complexidade Ciclomática: " + complexidadeCiclomatica);
         //analisa e printa
     }
 

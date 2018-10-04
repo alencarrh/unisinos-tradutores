@@ -28,6 +28,14 @@ public class TesteClass {
             default:
         }
 
+//        try {
+//            System.out.println("t");
+//        }
+//        catch (Exception e){
+//            System.out.println(e.toString());
+//        }
+
+
         if (a > 10) {
             X();
         }
