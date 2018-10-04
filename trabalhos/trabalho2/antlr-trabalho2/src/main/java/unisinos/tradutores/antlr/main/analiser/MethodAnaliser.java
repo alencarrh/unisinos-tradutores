@@ -14,6 +14,8 @@ public class MethodAnaliser {
 
     private final List<Method> methods;
 
+    private static final String PREFIX = "\t-> ";
+
     public void analise() {
 
         System.out.println("Resultados:");
@@ -32,7 +34,7 @@ public class MethodAnaliser {
     }
 
     private void fanOut(final Method method) {
-
+        System.out.println(PREFIX + "Fanout: " + method.getMethodsCalls().size());
     }
 
     private void nesting(final Method method) {
@@ -56,7 +58,7 @@ public class MethodAnaliser {
             }
         }
 
-        System.out.println("\t-> Aninhamento: " + nesting);
+        System.out.println(PREFIX + "Aninhamento: " + nesting);
 
 
     }
