@@ -1,5 +1,7 @@
 # Tradutores - Trabalho 2 - ANTLR
 
+## Autores: Alencar Rodrigo Hentges e Christian de Mello Lima.
+
 ## São pré-requisitos deste projeto:
 * **Maven 3** *[como instalar](https://www.mkyong.com/maven/how-to-install-maven-in-windows/)*
 * **Java 8**
