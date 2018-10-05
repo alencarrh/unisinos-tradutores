@@ -19,7 +19,6 @@ public class MethodAnaliser {
     private Map<String, Integer> commands;
     private final List<Method> methods;
     private static final String PREFIX = "\t-> ";
-    public int complexidadeCiclomatica;
 
     private Integer getWeight(String command) {
         if (isNull(commands)) {
@@ -52,7 +51,7 @@ public class MethodAnaliser {
     }
 
     private void complexidadeCiclomatica(final Method method) {
-        complexidadeCiclomatica = method.getCommands().stream().mapToInt(this::getWeight).sum();
+        int complexidadeCiclomatica = method.getCommands().stream().mapToInt(this::getWeight).sum();
         complexidadeCiclomatica++;
         System.out.println(PREFIX + "Complexidade Ciclomática: " + complexidadeCiclomatica);
     }

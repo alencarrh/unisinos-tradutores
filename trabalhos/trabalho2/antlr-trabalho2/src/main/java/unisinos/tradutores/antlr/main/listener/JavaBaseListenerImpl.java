@@ -2,6 +2,7 @@ package unisinos.tradutores.antlr.main.listener;
 
 
 import lombok.Getter;
+import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import unisinos.tradutores.antlr.main.domain.Method;
 import unisinos.tradutores.antlr.main.gramatica.Java8BaseListener;
 import unisinos.tradutores.antlr.main.gramatica.Java8Parser;
@@ -35,22 +36,52 @@ public class JavaBaseListenerImpl extends Java8BaseListener {
 
     @Override
     public void enterMethodInvocation(Java8Parser.MethodInvocationContext ctx) {
-        if (nonNull(currentMethod) && nonNull(ctx.methodName())) {
-            currentMethod.methodsCall(ctx.methodName().getText());
+        if (nonNull(currentMethod) && ctx.children.size() > 0) {
+            StringBuilder method = new StringBuilder(ctx.children.get(0).getText());
+            for (int i = 1; i < ctx.children.size(); i++) {
+                if (ctx.children.get(i) instanceof TerminalNodeImpl) {
+                    method.append(ctx.children.get(i).getText());
+                    continue;
+                }
+                if (ctx.children.get(i) instanceof Java8Parser.ArgumentListContext) {
+                    method.append("param");
+                }
+            }
+            currentMethod.methodsCall(method.toString());
         }
     }
 
     @Override
     public void enterMethodInvocation_lf_primary(Java8Parser.MethodInvocation_lf_primaryContext ctx) {
-        if (nonNull(currentMethod) && nonNull(ctx.Identifier())) {
-            currentMethod.methodsCall(ctx.Identifier().getText());
+        if (nonNull(currentMethod) && ctx.children.size() > 0) {
+            StringBuilder method = new StringBuilder(ctx.children.get(0).getText());
+            for (int i = 1; i < ctx.children.size(); i++) {
+                if (ctx.children.get(i) instanceof TerminalNodeImpl) {
+                    method.append(ctx.children.get(i).getText());
+                    continue;
+                }
+                if (ctx.children.get(i) instanceof Java8Parser.ArgumentListContext) {
+                    method.append("param");
+                }
+            }
+            currentMethod.methodsCall(method.toString());
         }
     }
 
     @Override
     public void enterMethodInvocation_lfno_primary(Java8Parser.MethodInvocation_lfno_primaryContext ctx) {
-        if (nonNull(currentMethod) && nonNull(ctx.Identifier())) {
-            currentMethod.methodsCall(ctx.Identifier().getText());
+        if (nonNull(currentMethod) && ctx.children.size() > 0) {
+            StringBuilder method = new StringBuilder(ctx.children.get(0).getText());
+            for (int i = 1; i < ctx.children.size(); i++) {
+                if (ctx.children.get(i) instanceof TerminalNodeImpl) {
+                    method.append(ctx.children.get(i).getText());
+                    continue;
+                }
+                if (ctx.children.get(i) instanceof Java8Parser.ArgumentListContext) {
+                    method.append("param");
+                }
+            }
+            currentMethod.methodsCall(method.toString());
         }
     }
 

@@ -90,8 +90,19 @@ public class TesteClass {
     public void Y() {
         done = true;
     }
+    public void Y(String abc) {
+        done = true;
+    }
 
     public void Z() {
+
+        System.out.println();
+        Y();
+
+        Y("asdasdasdasdasdasdasdasd");
+        Y("asdas");
+
+        System.out.println();
         done = true;
     }
 
